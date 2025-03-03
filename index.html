@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AGMINE</title>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --primary-color:#ca8d22;
+        --primary-color-dark:#8f600d;
+        --text-dark: #121888;
+        --text-light: #2741cc;
+        --white: #f2f4f1;
+        --max-width: 1200px;
+    }
+
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+    .section__container{
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+    }
+
+    .section__subheader{
+        margin-bottom: 0.5rem;
+        position: relative;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+    }
+
+    .section__subheader::after{
+        position: absolute;
+        content: "";
+        top: 50%;
+        transform: translate(1rem, -50%);
+        height: 2px;
+        width: 4rem;
+        background-color: var(--primary-color);
+    }
+    
+    .section__header{
+        max-width: 600px;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 3rem;
+        color: var(--text-dark);
+    }
+
+    .section__description{
+        max-width: 600px;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--white);
+        background-color: var(--primary-color);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover{
+        background-color: var(--primary-color-dark);
+        color: var(--white);
+    }
+
+    img{
+        width: 100%;
+        display: flex;
+    }
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .logo{
+        max-width: 70px;
+        rotate: -90deg;
+        margin: auto
+    }
+
+    html,
+    body{
+        scroll-behavior: smooth;
+    }
+
+    body{
+        font-family: "Poppins", sans-serif; 
+        background-color: black;
+    }
+
+    .header{
+       background-image: url(https://i.imgur.com/5L9z6Dl.jpeg); 
+       background-position: center center;
+       background-size: cover;
+       background-repeat: no-repeat;
+    }
+
+    nav{
+        position: fixed;
+        isolation: isolate;
+        top: 0;
+        width: 100%;
+        max-width: var(--max-width);
+        margin: auto;
+        z-index: 9;
+    }
+
+    .nav__bar{
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        background-color: var(--primary-color);
+    }
+
+    .nav__menu__btn{
+        font-size: 1.5rem;
+        color: var(--white);
+        cursor: pointer;
+    }
+
+    .nav__links{
+        list-style: none;
+        position: absolute;
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: var(--primary-color-dark);
+        transform: translateY(-100%);
+        transition: 0.5s;
+        z-index: -1;
+    }
+
+    .nav__links.open{
+        transform: translateY(0);  
+    }
+
+    .nav__links a{
+        position: relative;
+        isolation: isolate;
+        padding-bottom: 8px;
+        color: var(--white);
+        transition: 0.3s;
+    }
+
+    .nav__btn{
+        display: none;
+    }
+
+    .header__container{
+        padding-block: 10rem 15rem;
+    }
+
+    .header__container p{
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--white);
+        opacity: 1;
+    }
+
+    .header__container h1{
+        font-size: 4rem;
+        font-weight: 500;
+        line-height: 4.5rem;
+        color: var(--white);
+        text-align: center;
+    }
+
+    .header__container h1 span{
+        color: #ffed4d;
+    }
+
+    .ri-menu-line{
+        margin-left: 50px;
+        color: white;
+        size: 75px;
+    }
+
+    @media (width>768px) {
+        nav {
+            padding: 2rem 1rem;
+            position: static;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__bar{
+            padding: 0;
+            background-color: transparent;
+        }
+
+        .nav__menu__btn{
+            display: none; 
+        }
+
+        .nav__links{
+            padding: 0;
+            width: unset;
+            position: static;
+            transform: none;
+            flex-direction: row;
+            background-color: transparent;
+        }
+
+        .nav__btn{
+            display: block;
+        }
+
+        .nav__links a::after{
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background-color: var(--primary-color);
+            transition: 0.3s;
+            transform-origin: left;
+        }
+
+        .nav__links a:hover::after{
+            width: 100%;
+        }
+    }
+
+footer{
+        background-color: black; !important
+    }
+
+    .container{
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 50px 100px;
+        color: white;
+    }
+    .copyr{
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="nav__bar">
+                <div class="logo">
+                    <a href="index.html"><img src="ag2.png" alt="logo"></a>
+                </div>
+                <div class="nav_menu_btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html">Home</a></li><br><br>
+                <li><a href="index3.html">About</a></li><br><br>
+                <li><a href="index4.html">Maps</a></li><br><br>
+            </ul>
+            <button class="btn nav__btn"><a href="index2.html">Book Now</a></button>
+        </nav>
+        <div class="section__conatainer header__container" id="home">
+            <p>LIGHT - RAIL - TRANSIT</p>
+            <h1>The most trusted booking site for your LRT tickets.<br> Welcome to <span>Agmine</span>!</h1>
+        </div>
+    </header>
+
+    <footer>
+        <div class="container">
+            <div class="what"><br><br>
+                <h2>What is this?</h2>
+                <p>It seems that you have reached the end! Hi this is a NONE functional site made for a  project.</p><br><br>
+                <h2>Need the citations?</h2>
+                <p>Here you go! Click <a href="https://docs.google.com/document/d/1T2o8_UWBP3eSVQZgvuWF9jUoVCud_93ErxsoNUWkM84/edit?tab=t.0">here</a> to see our sources.</p><br><br>
+            </div>
+            <div class="copyr">
+                &copy; Dumaguing and Fabul 2025
+            </div>
+        </div>
+    </footer>
+
+<script>
+    const menuBtn=document.getElementById("menu-btn") //I used const instead of var or let because once a variable has been assigned a value const makes it unreassignable
+    const navLinks=document.getElementById("nav-links")
+    const menuBtnIcon=menuBtn.querySelector("i"); //I used the querySelector method because the first child element that matches a given CSS selector or selectors of an element is returned by the querySelector function 
+
+    menuBtn.addEventListener("click", ()=>{
+        navLinks.classList.toggle("open")
+
+        const isOpen= navLinks.classList.contains("open");
+        menuBtnIcon.setAttribute("class", isOpen?"ri-close-line": "ri-menu-line")
+    });
+
+    navLinks.addEventListener("click", ()=> {
+        navLinks.classList.remove("open");
+        menuBtnIcon.setAttribute("class", "ri-menu-line");
+    });
+</script>
+
+</body>
+</html>
